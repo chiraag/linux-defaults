@@ -1,0 +1,29 @@
+setenv PYTHONPATH /homes/chiraag/python/lib64/python2.4/site-packages
+setenv PATH /homes/chiraag/python/bin:/homes/mtikekar/local/bin:$PATH
+setenv LD_LIBRARY_PATH /usr/local/lib64
+
+if ($?prompt) then
+  alias mv mv -i
+  alias cp cp -i
+
+  set autolist
+  set autoexpand
+  set color
+  set colorcat
+  set complete = 'enhance'
+  set rmstar
+
+  # bindkey settings for history-search backwards
+  bindkey '\e[A'    history-search-backward
+  bindkey '\e[B'    history-search-forward
+  
+  
+  # chiraag@asahi$ 
+  set rprompt='[%{\033[0;34m%}%~%{\033[0m%}]'
+  setenv ENV_PROMPT ""
+  setenv GIT_BRANCH_CMD "sh -c 'git branch --no-color 2> /dev/null' | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'"
+  alias precmd 'set prompt = "%n@%m`$GIT_BRANCH_CMD`% " end'
+  #[%{\033[0;34m%}%~%{\033[m%}]\n
+endif
+
+alias use_xilinx_13.3 "source ~/use_xilinx_13.3"
